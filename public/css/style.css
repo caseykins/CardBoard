@@ -55,8 +55,14 @@
   width: 20vw;
 }
 
-.redirect {
+.direct {
   color: white;
+  cursor: pointer;
+}
+
+.direct:hover{
+  opacity: 50%;
+  transform: scale(1.1)
 }
 
 /* ============= Login Page (login.ejs) =============== */
@@ -125,17 +131,64 @@
   border-radius: 3px;
 }
 
-/* .loginHeader {
-  display: flex;
-  justify-content: space-evenly;
-  position: absolute;
+/* ============ Board (board.ejs) ============== */
+
+#profile {
+  background: rgb(60, 60, 171);
+}
+
+.boardHeader {
+  background: whitesmoke;
+  color: rgb(114, 150, 227);
+  position: fixed;
   width: 100vw;
-  height: 5vh;
   top: 0px;
   left: 0px;
-  background: darkgray;
-} */
+  height: 5vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+#logoutNav {
+  position: absolute;
+  right: 2vw;
+  top: 1.5vh;
+  text-decoration: none;
+  color: rgb(114, 150, 227);
+  cursor: pointer;
+}
+
+#logoutNav:hover {
+  opacity: 50%;
+  transform: scale(1.1)
+}
+
+#boardTitle {
+  color: white;
+  margin-top: 10vh;
+  text-align: center;
+}
+
+.cardContainer {
+  position: absolute;
+  height: 80vh;
+  width: 100%;
+  bottom: 0px;
+  left: 0px;
+  border-top: 2px solid black;
+  border-radius: 5px;
+  background: lightblue;
+}
+
+.card {
+  border: 1px solid black;
+  background: whitesmoke;
+  width: 15vw;
+  border-radius: 3px;
+  margin: 5px;
+  padding: 5px;
+}
 
 /* ============ Logout (logout.ejs) =============== */
 
@@ -181,7 +234,9 @@
   text-align: center;
 }
 
-
+#logoutRedirect {
+  color: white;
+}
 
 /* =========================== */
 
