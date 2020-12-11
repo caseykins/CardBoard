@@ -1,14 +1,194 @@
-.topHeader {
+
+/* ========= Home Page (index.ejs) ========== */
+#home {
+  background: rgb(60, 60, 171);
+}
+
+#homeContainer {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#h1Container {
+  background: rgb(185, 230, 250);
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  top: 0px;
+  left: 0px;
+  width: 45vw;
+  align-content: center;
+}
+
+#cardboard {
+  color: white;
+  top: 40vh;
+  left: 15vw;
+  margin-bottom: 10vh;
+}
+
+#homeImg {
+  width: 25vw;
+}
+
+#blurbContainer {
+  position: absolute;
+  right: 10vw;
+  top: 25vh;
+  background: rgb(114, 150, 227);
+  height: 50vh;
+  width: 25vw;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: whitesmoke;
+}
+
+#blurb {
+  width: 20vw;
+}
+
+.redirect {
+  color: white;
+}
+
+/* ============= Login Page (login.ejs) =============== */
+
+#login {
+  background: rgb(60, 60, 171);
+}
+
+.loginHeader {
+  background: whitesmoke;
+  color: rgb(114, 150, 227);
+  position: fixed;
+  width: 100vw;
+  top: 0px;
+  left: 0px;
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-size: 25px;
+  font-style: italic;
+}
+
+.loginContainer {
+  position: absolute;
+  top: 25vh;
+  left: 37.5vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgb(114, 150, 227);
+  height: 50vh;
+  width: 25vw;
+  border-radius: 10px;
+  color: white;
+  letter-spacing: 1px;
+}
+
+#loginForm {
+  width: 20vw;
+  text-align: center;
+}
+
+#auth-email {
+  margin: 5px;
+  border-radius: 3px;
+  border-color: white;
+  text-align: center;
+}
+
+#auth-password {
+  margin: 5px;
+  border-radius: 3px;
+  border-color: white;
+  text-align: center;
+}
+
+.submit {
+  background: rgb(60, 60, 171);
+  color: whitesmoke;
+  padding: 5px;
+  border-radius: 3px;
+}
+
+/* .loginHeader {
   display: flex;
   justify-content: space-evenly;
   position: absolute;
   width: 100vw;
+  height: 5vh;
   top: 0px;
   left: 0px;
   background: darkgray;
+} */
+
+
+/* ============ Logout (logout.ejs) =============== */
+
+#logout {
+  background: rgb(60, 60, 171);
 }
 
-.nav {
+.logoutHeader {
+  background: whitesmoke;
+  color: rgb(114, 150, 227);
+  position: fixed;
+  width: 100vw;
+  top: 0px;
+  left: 0px;
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logoutContainer {
+  position: absolute;
+  height: 30vh;
+  width: 33vw;
+  background: rgb(114, 150, 227);
+  top: 30vh;
+  left: 33vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+
+#success {
+  color: white;
+  text-align: center;
+  font-size: 20px;
+}
+
+#backToLogin {
+  color: white;
+  text-align: center;
+}
+
+
+
+/* =========================== */
+
+
+
+
+/* .nav {
   display: flex;
   justify-content: space-evenly;
 }
@@ -21,4 +201,4 @@
 
 .navItem {
   margin: 5px;
-}
+} */
