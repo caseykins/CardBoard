@@ -1,9 +1,24 @@
-nav ul li {
-  text-decoration: none;
-  display: inline-block;
-  margin-right: .3em;
+.topHeader {
+  display: flex;
+  justify-content: space-evenly;
+  position: absolute;
+  width: 100vw;
+  top: 0px;
+  left: 0px;
+  background: darkgray;
 }
 
-h1 {
-  color: chartreuse;
+.nav {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#nav {
+  list-style: none;
+  display: flex;
+  justify-content: right;
+}
+
+.navItem {
+  margin: 5px;
 }
