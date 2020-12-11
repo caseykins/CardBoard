@@ -28,7 +28,7 @@ router.post('/signup', (req, res) =>  {
     } 
   }).catch(error => { 
     // req.flash('error', error.message)
-    res.redirect('/')
+    res.redirect('/profile')
   })
 })
 
@@ -37,16 +37,17 @@ router.get('/login', (req, res) => {
 });
 
 router.post('/login', passport.authenticate('local', { 
-  successRedirect: '/',                                
+  successRedirect: '/profile',                                
   failureRedirect: '/auth/login',
   failureFlash: 'Invalid username or password', 
   successFlash: 'You have logged in!',          
 })) 
 
 router.get('/logout', (req, res) => {
+  res.render('auth/logout')
   req.logout()
   // req.flash('success', 'You have logged out.') 
-  res.redirect('/auth/login')
+  res.redirect('/auth/logout')
 })
 
 module.exports = router;
