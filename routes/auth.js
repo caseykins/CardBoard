@@ -3,11 +3,12 @@ const db = require('../models');
 const router = express.Router();
 const passport = require('../config/ppConfig')
 
+// SIGN UP
+
 router.get('/signup', (req, res) => {
   res.render('auth/signup');
 });
 
-//create a signup POST route
 router.post('/signup', (req, res) =>  {
   db.users.findOrCreate({
     where: { email: req.body.email },
@@ -19,7 +20,7 @@ router.post('/signup', (req, res) =>  {
   }).then(( [user, created] ) => {
     if (created) { 
       passport.authenticate('local', {
-        successRedirect: '/',
+        successRedirect: '/board/:userId',
         // successFlash: 'Account created and user logged in.' 
       })(req, res) 
     } else { 
@@ -28,25 +29,36 @@ router.post('/signup', (req, res) =>  {
     } 
   }).catch(error => { 
     // req.flash('error', error.message)
-    res.redirect('/')
+    res.redirect('/board/:userId')
   })
 })
+
+// LOGIN
 
 router.get('/login', (req, res) => {
   res.render('auth/login');
 });
 
 router.post('/login', passport.authenticate('local', { 
-  successRedirect: '/',                                
+  successRedirect: '/board/:userId',                                
   failureRedirect: '/auth/login',
   failureFlash: 'Invalid username or password', 
   successFlash: 'You have logged in!',          
 })) 
 
+// LOGOUT
+
 router.get('/logout', (req, res) => {
+  res.render('auth/logout')
   req.logout()
   // req.flash('success', 'You have logged out.') 
-  res.redirect('/auth/login')
+  res.redirect('/auth/logout')
 })
+
+// PULL USER DATA
+
+// router.get('/profile/:userId', (req, res) => {
+//   const foundUser = req.users
+// })
 
 module.exports = router;
