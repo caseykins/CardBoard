@@ -1,4 +1,4 @@
-<body id="profile">
+<body id="board">
     <header class="boardHeader">
         <h1 class="title">CardBoard</h1>
         <a id="logoutNav" href="/auth/logout">Logout</a>
@@ -7,16 +7,33 @@
     <h1 id="boardTitle">Welcome to your board, <%= userName %>!</h2>
 
     <div class="cardContainer">
+        <!-- add cards to list - post req to card route (at end of POST re-render board page with new data) -->
 
-      <div class="card">
-        <input placeholder="Card Title" />
-        <form>
-          <input placeholder="Add a task" />
-          <button>+</button>
+        <!-- <form action="/" method="post"> 
+            <button id="addCardBtn">Add List</button>
+        </form> -->
+
+    <form action="/board" method="POST">
+      <li class="list">
+        <p id="addList">Add new list</p>
+        <input name="title" type="text" placeholder="List Name" /><button id="doIt">Do it</button>
+      </li>
+    </form>
+
+
+    <% foundList.forEach(list => { %>
+      <div class="newList">
+        <h4 id="newListTitle"><%= list.listName %></h4>
+        <input placeholder="Add Task" />
+        <form name="delete" type="submit" action="/board?_method=DELETE" method="POST">
+          <button type="submit" class="btn"> Remove </button>
         </form>
       </div>
+    <% }) %>
 
     </div>
 
 
 </body>
+
+<script src='/scripts/app.js'></script>  
