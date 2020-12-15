@@ -7,33 +7,35 @@
     <h1 id="boardTitle">Welcome to your board, <%= userName %>!</h2>
 
     <div class="cardContainer">
-        <!-- add cards to list - post req to card route (at end of POST re-render board page with new data) -->
-
-        <!-- <form action="/" method="post"> 
-            <button id="addCardBtn">Add List</button>
-        </form> -->
-
-    <form action="/board" method="POST">
-      <li class="list">
-        <p id="addList">Add new list</p>
-        <input name="title" type="text" placeholder="List Name" /><button id="doIt">Do it</button>
-      </li>
-    </form>
-
-
-    <% foundList.forEach(list => { %>
-      <div class="newList">
-        <h4 id="newListTitle"><%= list.listName %></h4>
-        <input placeholder="Add Task" />
-        <form name="delete" type="submit" action="/board?_method=DELETE" method="POST">
-          <button type="submit" class="btn"> Remove </button>
+      <div class="listWrapper">
+        <form action="/board" method="POST">
+          <li class="list">
+            <p id="addList">Add new list</p>
+            <input name="title" type="text" placeholder="List Name" /><button id="doIt">Do it</button>
+          </li>
         </form>
       </div>
-    <% }) %>
+
+      <% foundList.forEach(list => { %>
+        <div class="listWrapper">
+          <div class="newList">
+            <form method="POST" action="/board/?_method=PUT">
+              <input name="newTitle" 
+                type="text" 
+                id="newListTitle" 
+                placeholder="<%= list.listName %>" />
+            </form>
+            <input placeholder="Add Task" />
+            <form action='/board/<%= list.id %>/?_method=DELETE' method="POST">
+              <button type="delete" class="btn" value="delete"> Delete </button>
+            </form>
+          </div>
+        </div>
+      <% }) %>
 
     </div>
 
 
 </body>
 
-<script src='/scripts/app.js'></script>  
+<!-- <script src='/scripts/app.js'></script>   -->
