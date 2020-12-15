@@ -20,7 +20,7 @@ router.post('/signup', (req, res) =>  {
   }).then(( [user, created] ) => {
     if (created) { 
       passport.authenticate('local', {
-        successRedirect: '/board/:userId',
+        successRedirect: '/board',
         // successFlash: 'Account created and user logged in.' 
       })(req, res) 
     } else { 
@@ -29,7 +29,7 @@ router.post('/signup', (req, res) =>  {
     } 
   }).catch(error => { 
     // req.flash('error', error.message)
-    res.redirect('/board/:userId')
+    res.redirect(`/auth/signup`)
   })
 })
 
@@ -40,7 +40,7 @@ router.get('/login', (req, res) => {
 });
 
 router.post('/login', passport.authenticate('local', { 
-  successRedirect: '/board/:userId',                                
+  successRedirect: '/board',
   failureRedirect: '/auth/login',
   failureFlash: 'Invalid username or password', 
   successFlash: 'You have logged in!',          

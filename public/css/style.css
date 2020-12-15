@@ -30,6 +30,8 @@
   top: 40vh;
   left: 15vw;
   margin-bottom: 10vh;
+  font-family: 'Annie Use Your Telescope', cursive;
+  font-size: 4em;
 }
 
 #homeImg {
@@ -53,6 +55,12 @@
 
 #blurb {
   width: 20vw;
+  line-height: 1.15;
+}
+
+span {
+  font-family: 'Annie Use Your Telescope', cursive;
+  font-size: 1.3em;
 }
 
 .direct {
@@ -86,7 +94,7 @@
 
 .title {
   font-size: 25px;
-  font-style: italic;
+  font-family: 'Annie Use Your Telescope', cursive;
 }
 
 .loginContainer {
@@ -102,6 +110,9 @@
   width: 25vw;
   border-radius: 10px;
   color: white;
+}
+
+#loginTitle {
   letter-spacing: 1px;
 }
 
@@ -113,15 +124,17 @@
 #auth-email {
   margin: 5px;
   border-radius: 3px;
-  border-color: white;
+  border: 1px solid white;
   text-align: center;
+  padding: 3px;
 }
 
 #auth-password {
   margin: 5px;
   border-radius: 3px;
-  border-color: white;
+  border: 1px solid white;
   text-align: center;
+  padding: 3px;
 }
 
 .submit {
@@ -131,17 +144,28 @@
   border-radius: 3px;
 }
 
+#loginRedirect {
+  width: 20vw;
+  text-align: center;
+}
+
+#goToSignup {
+  color: white;
+}
+
 /* ============ Board (board.ejs) ============== */
 
-#profile {
+#board {
   background: rgb(60, 60, 171);
+  width: 100%;
+  overflow-x: hidden;
 }
 
 .boardHeader {
   background: whitesmoke;
   color: rgb(114, 150, 227);
   position: fixed;
-  width: 100vw;
+  width: 100%;
   top: 0px;
   left: 0px;
   height: 5vh;
@@ -166,28 +190,71 @@
 
 #boardTitle {
   color: white;
-  margin-top: 10vh;
+  margin-top: 7.5vh;
   text-align: center;
 }
 
 .cardContainer {
   position: absolute;
+  display: flex;
+  justify-content: space-between;
   height: 80vh;
-  width: 100%;
   bottom: 0px;
   left: 0px;
+  width: 100%;
   border-top: 2px solid black;
-  border-radius: 5px;
+  /* border-radius: 5px; */
   background: lightblue;
+  overflow-x: scroll;
+  padding: 20px;
 }
 
-.card {
+.list {
   border: 1px solid black;
   background: whitesmoke;
   width: 15vw;
   border-radius: 3px;
-  margin: 5px;
+  margin: 10px;
   padding: 5px;
+  list-style: none;
+}
+
+#addList {
+  margin: 0px;
+  padding: 5px 2px;
+}
+
+#doIt {
+  margin: 1.5px;
+}
+
+.newList {
+  border: 1px solid black;
+  background: whitesmoke;
+  width: 20%;
+  border-radius: 3px;
+  margin: 10px;
+  padding: 1px;
+  height: 12%;
+  list-style: none;
+}
+
+#newListTitle {
+  margin: 2px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  color: blue;
+}
+
+::-webkit-scrollbar-track {
+  background: gray;
+}
+
+::-webkit-scrollbar-thumb {
+  background: pink;
+  border-radius: 10px;
 }
 
 /* ============ Logout (logout.ejs) =============== */
@@ -238,10 +305,78 @@
   color: white;
 }
 
-/* =========================== */
+/* ============= Sign Up (signup.ejs) ============== */
 
+#signup {
+  background: rgb(60, 60, 171);
+}
 
+.signupHeader {
+  background: whitesmoke;
+  color: rgb(114, 150, 227);
+  position: fixed;
+  width: 100vw;
+  top: 0px;
+  left: 0px;
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.signupContainer {
+  background: rgb(114, 150, 227);
+  border-radius: 10px;
+  color: white;
+  position: absolute;
+  top: 25vh;
+  left: 37.5vw;
+  height: 50vh;
+  width: 25vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+#signupTitle {
+  letter-spacing: 1px;
+}
+
+#signupForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 3px;
+  width: 20vw;
+}
+
+.signupField {
+  padding: 3px;
+  margin: 5px;
+  border-radius: 3px;
+  border: 1px solid white;
+  text-align: center;
+}
+
+#signupRedirect {
+  text-align: center;
+  color: white;
+}
+
+#goToLogin {
+  color: white;
+}
+
+#goToLogin:hover{
+  opacity: 50%;
+}
+
+#signupBtn {
+  margin-top: 15px;
+}
+
+/* =============  ============== */
 
 /* .nav {
   display: flex;
