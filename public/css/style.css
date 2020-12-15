@@ -156,8 +156,7 @@ span {
 /* ============ Board (board.ejs) ============== */
 
 #board {
-  background: rgb(60, 60, 171);
-  width: 100%;
+  background: rgb(114, 150, 227);
   overflow-x: hidden;
 }
 
@@ -190,56 +189,81 @@ span {
 
 #boardTitle {
   color: white;
-  margin-top: 7.5vh;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  margin-top: 0px;
   text-align: center;
+  justify-content: center;
+  background: rgb(60, 60, 171);
+  width: 100%;
+  left: 0px;
+  height: 7%;
+  top: 5vh;
 }
 
 .cardContainer {
-  position: absolute;
+  /* position: absolute; */
   display: flex;
-  justify-content: space-between;
-  height: 80vh;
-  bottom: 0px;
-  left: 0px;
+  justify-content: flex-start;
+  height: 79vh;
+  margin-top: 20vh;
+  /* bottom: 0px; */
+  /* left: 0px; */
   width: 100%;
-  border-top: 2px solid black;
+  /* border-top: 2px solid black; */
   /* border-radius: 5px; */
-  background: lightblue;
+  /* background: lightblue; */
   overflow-x: scroll;
-  padding: 20px;
+}
+
+.listWrapper {
+  height: 100%;
+  width: 272px;
+  margin: 0px 10px;
 }
 
 .list {
   border: 1px solid black;
   background: whitesmoke;
-  width: 15vw;
+  width: 262px;
   border-radius: 3px;
-  margin: 10px;
+  margin-right: 10px;
   padding: 5px;
   list-style: none;
 }
 
 #addList {
-  margin: 0px;
-  padding: 5px 2px;
+  margin: 2px;
+  /* padding: 2px; */
 }
 
 #doIt {
-  margin: 1.5px;
+  margin: 2px;
 }
 
 .newList {
   border: 1px solid black;
   background: whitesmoke;
-  width: 20%;
+  width: 272px;
   border-radius: 3px;
-  margin: 10px;
-  padding: 1px;
-  height: 12%;
+  /* margin: 0px 10px; */
+  padding: 5px;
+  /* height: 90%; */
   list-style: none;
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: top;
+  white-space: nowrap;
 }
 
 #newListTitle {
+  margin: 2px;
+  border: none;
+  background: whitesmoke;
+}
+
+.btn {
   margin: 2px;
 }
 
