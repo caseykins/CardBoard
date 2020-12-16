@@ -1,17 +1,26 @@
 <div id="board">
     <header class="boardHeader">
-        <h1 class="title">CardBoard</h1>
+        <a href="/board" id="title">CardBoard</a>
         <a id="logoutNav" href="/auth/logout">Logout</a>
     </header>
 
-    <h1 id="boardTitle">Welcome to your board, <%= userName %>!</h2>
+    <p id="boardTitle">Welcome to your board, <%= userName %>!</p>
 
+<!-- Adds New List Card -->
     <div class="cardContainer">
       <div class="listWrapper">
         <form action="/board" method="POST">
           <li class="list">
-            <p id="addList">Add new list</p>
-            <input name="title" type="text" placeholder="List Name" /><button id="doIt">Do it</button>
+            <p id="addListTitle">Create a New List!</p>
+            <textarea 
+              id="addList" 
+              name="title" 
+              type="text" 
+              placeholder="List Name" 
+              maxlength="50"
+            ></textarea>
+              <button id="doIt">Do It!
+              </button>
           </li>
         </form>
       </div>
@@ -21,44 +30,57 @@
         <% foundList.forEach(list => { %>
 
           <div class="listWrapper">
-
-            <div class="newList">
+<!-- Edits List Name -->
+            <div class="newList" class="draggable" draggable="true">
               <form method="POST" action="/board/<%= list.id %>/?_method=PUT">
-                <input 
+                <textarea
                   name="newTitle" 
-                  type="text" 
+                  <%# type="text" #%>
                   class="newListTitle" 
-                  placeholder="<%= list.listName %>" />
-              </form>
-              
-              <form method="POST" action="/board/<%= list.id %>" >
-                <strike>
-                  <input 
-                    name="addTask" 
-                    type="text" 
-                    class="addTask"
-                    placeholder="Add Task" />
-                </strike>
+                  maxlength="75"><%= list.listName %>
+                </textarea>
               </form>
 
-              <form method="POST" action="/board">
-                <button 
-                    class="completeTask"
-                    onclick={strikeThrough()}
-                  ><i class="fas fa-pencil-alt"></i>
-                </button>
-              </form>
-              <form method="POST" action="/board/?_method=DELETE">
-                <button><i class="fas fa-trash-alt"></i></button>
-              </form>
+<!-- Creates New Task, Sends To DB -->
+<!-- NEED TO FIND WAY TO APPEND TO LIST CONTAINER WITH THESE DEFAULT VALUES BELOW -->
+<!-- DOES THIS NEED TO BE OUTSIDE OF THE LOOP, LIKE THE CREATE LIST FORM ABOVE? (LINE 12) -->
+              <div class="taskCard" class="draggable" draggable="true">
+                <form method="POST" action="/board">
+                  <strike>
+                    <input 
+                      name="addTask" 
+                      type="text" 
+                      class="addTask"
+                      placeholder="Add Task" />
+                  </strike>
+                </form> 
 
-              <form action='/board/<%= list.id %>/?_method=DELETE' method="POST">
-                <button 
-                  type="delete" 
-                  class="deleteListBtn" 
-                  value="delete" 
-                  > Delete </button>
-              </form>
+  <!-- Upon button click, strikethrough finished task -->
+                <div class="taskBtnContainer">  
+                  <form method="POST" action="/board">
+                    <button 
+                      class="taskBtn"
+                      onclick={strikeThrough()}
+                    ><i class="fas fa-check fa-lg"></i>
+                    </button>
+                  </form>
+  <!-- delete task from list -->
+                  <form method="POST" action="/board/?_method=DELETE">
+                    <button class="taskBtn">
+                      <i class="fas fa-trash-alt fa-lg"></i>
+                    </button>
+                  </form>
+                </div>
+              </div>
+
+                <form action='/board/<%= list.id %>/?_method=DELETE' method="POST">
+                  <button 
+                    type="delete" 
+                    class="deleteListBtn" 
+                    value="delete" 
+                    >Delete List
+                  </button>
+                </form>
             </div>
 
           </div>
@@ -72,4 +94,4 @@
 
 </div>
 
-<!-- <script src='/scripts/app.js'></script>   -->
+<script src='/scripts/app.js'></script>  
