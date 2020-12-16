@@ -1,4 +1,4 @@
-<body id="board">
+<div id="board">
     <header class="boardHeader">
         <h1 class="title">CardBoard</h1>
         <a id="logoutNav" href="/auth/logout">Logout</a>
@@ -16,26 +16,60 @@
         </form>
       </div>
 
-      <% foundList.forEach(list => { %>
-        <div class="listWrapper">
-          <div class="newList">
-            <form method="POST" action="/board/?_method=PUT">
-              <input name="newTitle" 
-                type="text" 
-                id="newListTitle" 
-                placeholder="<%= list.listName %>" />
-            </form>
-            <input placeholder="Add Task" />
-            <form action='/board/<%= list.id %>/?_method=DELETE' method="POST">
-              <button type="delete" class="btn" value="delete"> Delete </button>
-            </form>
+      <div class="listContainer">
+
+        <% foundList.forEach(list => { %>
+
+          <div class="listWrapper">
+
+            <div class="newList">
+              <form method="POST" action="/board/<%= list.id %>/?_method=PUT">
+                <input 
+                  name="newTitle" 
+                  type="text" 
+                  class="newListTitle" 
+                  placeholder="<%= list.listName %>" />
+              </form>
+              
+              <form method="POST" action="/board/<%= list.id %>" >
+                <strike>
+                  <input 
+                    name="addTask" 
+                    type="text" 
+                    class="addTask"
+                    placeholder="Add Task" />
+                </strike>
+              </form>
+
+              <form method="POST" action="/board">
+                <button 
+                    class="completeTask"
+                    onclick={strikeThrough()}
+                  ><i class="fas fa-pencil-alt"></i>
+                </button>
+              </form>
+              <form method="POST" action="/board/?_method=DELETE">
+                <button><i class="fas fa-trash-alt"></i></button>
+              </form>
+
+              <form action='/board/<%= list.id %>/?_method=DELETE' method="POST">
+                <button 
+                  type="delete" 
+                  class="deleteListBtn" 
+                  value="delete" 
+                  > Delete </button>
+              </form>
+            </div>
+
           </div>
-        </div>
-      <% }) %>
+
+        <% }) %>
+      
+      </div>
 
     </div>
 
 
-</body>
+</div>
 
 <!-- <script src='/scripts/app.js'></script>   -->
