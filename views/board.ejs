@@ -9,7 +9,7 @@
 <!-- Adds New List Card -->
     <div class="cardContainer">
       <div class="listWrapper">
-        <form action="/board" method="POST">
+        <form id="addListForm" action="/board" method="POST">
           <li class="list">
             <p id="addListTitle">Create a New List!</p>
             <textarea 
@@ -45,7 +45,7 @@
 <!-- NEED TO FIND WAY TO APPEND TO LIST CONTAINER WITH THESE DEFAULT VALUES BELOW -->
 <!-- DOES THIS NEED TO BE OUTSIDE OF THE LOOP, LIKE THE CREATE LIST FORM ABOVE? (LINE 12) -->
               <div class="taskCard" class="draggable" draggable="true">
-                <form method="POST" action="/board">
+                <form method="POST" action="/board/<%= list.id %>/newtask">
                   <strike>
                     <input 
                       name="addTask" 
