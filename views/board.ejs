@@ -1,4 +1,4 @@
-<body id="board">
+<div id="board">
     <header class="boardHeader">
         <h1 class="title">CardBoard</h1>
         <a id="logoutNav" href="/auth/logout">Logout</a>
@@ -7,33 +7,69 @@
     <h1 id="boardTitle">Welcome to your board, <%= userName %>!</h2>
 
     <div class="cardContainer">
-        <!-- add cards to list - post req to card route (at end of POST re-render board page with new data) -->
-
-        <!-- <form action="/" method="post"> 
-            <button id="addCardBtn">Add List</button>
-        </form> -->
-
-    <form action="/board" method="POST">
-      <li class="list">
-        <p id="addList">Add new list</p>
-        <input name="title" type="text" placeholder="List Name" /><button id="doIt">Do it</button>
-      </li>
-    </form>
-
-
-    <% foundList.forEach(list => { %>
-      <div class="newList">
-        <h4 id="newListTitle"><%= list.listName %></h4>
-        <input placeholder="Add Task" />
-        <form name="delete" type="submit" action="/board?_method=DELETE" method="POST">
-          <button type="submit" class="btn"> Remove </button>
+      <div class="listWrapper">
+        <form action="/board" method="POST">
+          <li class="list">
+            <p id="addList">Add new list</p>
+            <input name="title" type="text" placeholder="List Name" /><button id="doIt">Do it</button>
+          </li>
         </form>
       </div>
-    <% }) %>
+
+      <div class="listContainer">
+
+        <% foundList.forEach(list => { %>
+
+          <div class="listWrapper">
+
+            <div class="newList">
+              <form method="POST" action="/board/<%= list.id %>/?_method=PUT">
+                <input 
+                  name="newTitle" 
+                  type="text" 
+                  class="newListTitle" 
+                  placeholder="<%= list.listName %>" />
+              </form>
+              
+              <form method="POST" action="/board/<%= list.id %>" >
+                <strike>
+                  <input 
+                    name="addTask" 
+                    type="text" 
+                    class="addTask"
+                    placeholder="Add Task" />
+                </strike>
+              </form>
+
+              <form method="POST" action="/board">
+                <button 
+                    class="completeTask"
+                    onclick={strikeThrough()}
+                  ><i class="fas fa-pencil-alt"></i>
+                </button>
+              </form>
+              <form method="POST" action="/board/?_method=DELETE">
+                <button><i class="fas fa-trash-alt"></i></button>
+              </form>
+
+              <form action='/board/<%= list.id %>/?_method=DELETE' method="POST">
+                <button 
+                  type="delete" 
+                  class="deleteListBtn" 
+                  value="delete" 
+                  > Delete </button>
+              </form>
+            </div>
+
+          </div>
+
+        <% }) %>
+      
+      </div>
 
     </div>
 
 
-</body>
+</div>
 
-<script src='/scripts/app.js'></script>  
+<!-- <script src='/scripts/app.js'></script>   -->
