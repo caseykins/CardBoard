@@ -286,6 +286,7 @@ span {
   /* border: none; */
   border: 1px solid black;
   background: whitesmoke;
+  color: black;
 }
 
 .deleteListBtn {
