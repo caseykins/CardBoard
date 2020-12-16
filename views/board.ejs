@@ -23,7 +23,7 @@
               </button>
           </li>
         </form>
-      </div>
+      </div>  <!-- closing tag for listWrapper -->
 
       <div class="listContainer">
 
@@ -41,6 +41,19 @@
                 </textarea>
               </form>
 
+              <% list.tasks.forEach(task => { %>
+              <div class="taskCard" class="draggable" draggable="true">
+                <strike>
+                  <input
+                    name="addTask" 
+                    type="text" 
+                    class="addTask"
+                    value="<%= task.name %>" 
+                  />
+                </strike>
+              </div>
+              <% }) %>
+
 <!-- Creates New Task, Sends To DB -->
 <!-- NEED TO FIND WAY TO APPEND TO LIST CONTAINER WITH THESE DEFAULT VALUES BELOW -->
 <!-- DOES THIS NEED TO BE OUTSIDE OF THE LOOP, LIKE THE CREATE LIST FORM ABOVE? (LINE 12) -->
@@ -57,21 +70,21 @@
 
   <!-- Upon button click, strikethrough finished task -->
                 <div class="taskBtnContainer">  
-                  <form method="POST" action="/board">
+                  <%#<form method="POST" action="/board">#%>
                     <button 
                       class="taskBtn"
                       onclick={strikeThrough()}
                     ><i class="fas fa-check fa-lg"></i>
                     </button>
-                  </form>
+                  <!-- </form> -->
   <!-- delete task from list -->
                   <form method="POST" action="/board/?_method=DELETE">
                     <button class="taskBtn">
                       <i class="fas fa-trash-alt fa-lg"></i>
                     </button>
                   </form>
-                </div>
-              </div>
+                </div>  <!-- closing tag for taskBtnContainer -->
+              </div>  <!-- closing tag for taskCard -->
 
                 <form action='/board/<%= list.id %>/?_method=DELETE' method="POST">
                   <button 
@@ -81,17 +94,17 @@
                     >Delete List
                   </button>
                 </form>
-            </div>
+            </div>  <!-- closing tag for newList -->
 
-          </div>
+          </div>  <!-- closing tag for listWrapper -->
 
         <% }) %>
       
-      </div>
+      </div>  <!-- closing tag for listContainer -->
 
-    </div>
+    </div> <!-- closing tag for cardContainer -->
 
 
-</div>
+</div>  <!-- closing tag for board -->
 
 <script src='/scripts/app.js'></script>  

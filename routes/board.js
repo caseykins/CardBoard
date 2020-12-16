@@ -20,15 +20,12 @@ router.get("/board", isLoggedIn, (req, res) => {
 
 // Add a new task to list
 router.post('/board/:id/newtask', isLoggedIn, (req, res) => {
-    console.log(req.body.addTask, "========add task=======")
-    console.log(req.user.id, "======user id======")
-    console.log(req.params.id, "======params id(list id)====")
-    console.log(req.user.userName, "======User Name====")
     db.tasks.create({
         name: req.body.addTask,
         userId: req.user.id,
         listId: req.params.id
     }).then( function (createTask) { 
+        // APPEND TO LIST USING LIST ID
         res.redirect('/board')
     })
 })
