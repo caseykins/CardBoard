@@ -5,14 +5,28 @@ console.log("sanity check")
 //      filters through what's clicked and c.ls the target (update/delete/etc..)
 
 
-function pDefault(e) {
-    e.preventDefault()
+// function pDefault(e) {
+//     e.preventDefault()
+// }
+
+// const listContainer = document.querySelector(".listContainer")
+// listContainer.addEventListener('click', pDefault)
+// // console.log(listContainer)
+
+// function strikeThrough() {
+//     string.strike()
+// }
+
+function submitOnEnter(event){
+    if(event.which === 13){
+        event.target.form.dispatchEvent(new Event("submit", {cancelable: true}));
+        event.preventDefault(); // Prevents the addition of a new line in the text field (not needed in a lot of cases)
+    }
 }
 
-const listContainer = document.querySelector(".listContainer")
-listContainer.addEventListener('click', pDefault)
-// console.log(listContainer)
+document.getElementById("#addList").addEventListener("keypress", submitOnEnter);
 
-function strikeThrough() {
-    string.strike()
-}
+document.getElementById("#addListForm").addEventListener("submit", (event) => {
+    event.preventDefault();
+    // console.log("form submitted");
+});

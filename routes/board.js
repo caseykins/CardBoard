@@ -25,7 +25,6 @@ router.post('/board/:id/newtask', isLoggedIn, (req, res) => {
         userId: req.user.id,
         listId: req.params.id
     }).then( function (createTask) { 
-        // APPEND TO LIST USING LIST ID
         res.redirect('/board')
     })
 })
@@ -43,25 +42,10 @@ router.put('/board/:id', isLoggedIn, (req, res) => {
     })
 })
 
-// Delete List
-router.delete('/board/:id', isLoggedIn, (req, res) => {
-    db.lists.destroy({
-        where: {
-            id: req.params.id,
-        }
-    }).then((removedList) => {
-        res.redirect('/board') 
-    })
-})
-
 // Edit task name
-
-// strike() goes here....?
-
-router.put('/board', isLoggedIn, (req, res) => {
-    // console.log(req.user.id, '=========user id=========')
-    console.log(req.params.id, '=========params id=======')
-    console.log(req.body, '=========req body=======')
+router.put('/board/:id/editTask', isLoggedIn, (req, res) => {
+    console.log(req.body.addTask, "=========== Task Name")
+    console.log(req.params.id, "=========== Task ID")
     db.tasks.update({
         name: req.body.addTask,
     }, {
@@ -73,19 +57,29 @@ router.put('/board', isLoggedIn, (req, res) => {
     })
 })
 
+// Delete List
+router.delete('/board/:id', isLoggedIn, (req, res) => {
+    db.lists.destroy({
+        where: {
+            id: req.params.id,
+        }
+    }).then((removedList) => {
+        res.redirect('/board') 
+    })
+})
+
 
 // Delete task from list/page/database
-// (might forego this and only use edit)
-
-// router.delete('/board/:id', isLoggedIn, (req, res) => {
-//     db.lists.destroy({
-//         where: {
-//             id: req.params.id,
-//         }
-//     }).then((removedList) => {
-//         res.redirect('/board') 
-//     })
-// })
+router.delete('/board/:id/deleteItem', isLoggedIn, (req, res) => {
+    console.log(req.params.id, "========== Task Id")
+    db.tasks.destroy({
+        where: {
+            id: req.params.id,
+        }
+    }).then((removedList) => {
+        res.redirect('/board') 
+    })
+})
 
 // Create New List
 router.post('/board', (req, res) => {
