@@ -33,43 +33,40 @@
 
             <!-- Edits List Name -->
             <div class="newList" class="draggable" draggable="true">
-              <form method="POST" action="/board/<%= list.id %>/?_method=PUT">
+              <form id="listForm" method="POST" action="/board/<%= list.id %>/?_method=PUT">
                 <input
+                  id="newListTitle"
                   name="newTitle" 
                   type="text"
-                  class="newListTitle" 
-                  value="<%= list.listName %>" 
+                  class="newListTitle"
+                  value="<%= list.listName %>"
                 />
               </form>
 
-
               <!-- Adds new tasks to lists -->
               <% list.tasks.forEach(task => { %>
-
+                
                 <!-- Edits task name -->
-                <div class="newTaskCard" class="draggable" draggable="true">
+                <div class="newTaskCard" class="draggable" draggable="false">
                   <form method="POST" action="/board/<%= task.id %>/editTask/?_method=PUT">
-                    <strike>
-                      <input
-                        name="addTask" 
-                        type="text"
-                        class="newTask"
-                        value="<%= task.name %>"
-                      />
-                    </strike>
-                  </form>
+                    <textarea
+                      name="addTask" 
+                      type="text"
+                      class="newTaskName"
+                      value="<%= task.name %>"
+                      maxlength="100"
+                    ><%= task.name %></textarea>
+                  
 
                   <!-- Upon button click, strikethrough finished task -->
                   <div class="taskBtnContainer">  
-                    <form method="POST" action="/board">
                       <button 
                         class="taskBtn"
-                        onclick={strikeThrough()}
-                      ><i class="fas fa-check fa-lg"></i>
+                      ><i class="fas fa-pencil-alt fa-lg"></i>
                       </button>
-                    </form>
+                  </form>
+
                     <!-- delete task from list -->
-                    <% console.log(task.id, "==============task id")%>
                     <form method="POST" action="/board/<%= task.id %>/deleteItem/?_method=DELETE">
                       <button class="taskBtn">
                         <i class="fas fa-trash-alt fa-lg"></i>
@@ -80,7 +77,7 @@
                 </div>  <!-- closing tag for newTask -->
               <% }) %>
 
-              <div class="taskCard" class="draggable" draggable="true">
+              <div class="taskCard" class="draggable" draggable="false">
                 <form method="POST" action="/board/<%= list.id %>/newtask">
                   <strike>
                     <input 
@@ -92,7 +89,6 @@
                 </form> 
               </div>  <!-- closing tag for taskCard -->
               
-
                 <form action='/board/<%= list.id %>/?_method=DELETE' method="POST">
                   <button 
                     type="delete" 
@@ -111,7 +107,6 @@
 
     </div> <!-- closing tag for cardContainer -->
 
-
 </div>  <!-- closing tag for board -->
 
-<script src='/scripts/app.js'></script>  
+<!-- <script src='/scripts/app.js'></script>   -->
