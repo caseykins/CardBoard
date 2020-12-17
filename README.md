@@ -23,7 +23,7 @@ ___
 
 ![landing page](./public/images/landingpage.png)
 ![login page](./public/images/login.png)
-![signup page](./public/images/signuo.png)
+![signup page](./public/images/signup.png)
 ![board page 1](./public/images/board1.png)
 ![board page 2](./public/images/board2.png)
 ![logout page](./public/images/logout.png)
