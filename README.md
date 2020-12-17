@@ -6,20 +6,20 @@ Welcome to CardBoard! CardBoard is a fully interactive, digital to-do list. In o
 ___
 
 ### Why?
----
+<hr style="border:1px solid gray"> </hr>
 
 I wanted to make an app that I can see myself improving and even using over time. I wanted to take a model, Trello, that has a lot of UX/UI properties and see if I could test myself in building something interactive using Express and EJS. I was also encouraged to use Express/EJS only for this project in order to implement drag and drop components later.
 
 ___
 
 ### Technologies Used
----
+<hr style="border:1px solid gray"> </hr>
 
 Express.js, Node.js, Sequelize, Postgres, EJS, HTML5, CSS, Javascript
 ___
 
 ### Screenshots
----
+<hr style="border:1px solid gray"> </hr>
 
 ![landing page](./public/images/landingpage.png)
 ![login page](./public/images/login.png)
@@ -31,7 +31,7 @@ ___
 ___
 
 ### Future Development
----
+<hr style="border:1px solid gray"> </hr>
 
 * Drag and Drop Feature
 * Allow User to create multiple boards and navigate them
@@ -41,3 +41,10 @@ ___
 * Archive feature for lists and tasks
 * Change username feature
 * Strikethrough finished tasks with checkmark button
+
+___
+
+### Special Thanks
+<hr style="border:1px solid gray"> </hr>
+
+This project would not have happened without the help of a lot of great people. There are so many to name, but a few special mentions go out to Brock Whitbread-Cole, Jacob Kleiman, James Sinkler, and Michael Petty - all are fantastic instructors and helped me through many blockers. A huge thanks to my fellow GA students who kept me sane during this project and offering support and advice along the way. Lastly, the internet for doing what it does and also Trello for making a product worthy enough to replicate.
