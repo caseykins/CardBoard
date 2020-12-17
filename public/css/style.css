@@ -207,9 +207,7 @@ span {
 #board {
   background: rgb(114, 150, 227);
   overflow-x: hidden;
-  /* overflow-y: hidden; */
   height: 100%;
-  /* height: 79vh; */
   width: 100%;
 }
 
@@ -270,22 +268,15 @@ span {
   font-family: 'PT Sans Narrow', sans-serif;
   letter-spacing: 1px;
   font-size: 24px;
-  /* font-style: italic; */
 }
 
 .cardContainer {
-  /* position: absolute; */
   display: flex;
   justify-content: flex-start;
-  height: 78vh;
+  height: 77vh;
   margin-top: 20vh;
   padding-top: 5px;
-  /* bottom: 0px; */
-  /* left: 0px; */
   width: 100%;
-  /* border: 2px solid black; */
-  /* border-radius: 5px; */
-  /* background: lightblue; */
   overflow-x: scroll;
 }
 
@@ -296,7 +287,6 @@ span {
 }
 
 .list {
-  /* border: 1px solid black; */
   background: white;
   text-align: center;
   width: 262px;
@@ -314,13 +304,11 @@ span {
 
 #addListTitle {
   font-family: 'Annie Use Your Telescope', cursive;
-  /* letter-spacing: 1px; */
   font-size: 18px;
   font-weight: bold;
 }
 
 #addList {
-  /* margin: 2px; */
   border: none;
   padding: 2px 0px 2px 3px;
   width: 190px;
@@ -329,6 +317,7 @@ span {
   height: 20px;
   max-height: 50px;
   min-height: 20px;
+  font-family: sans-serif;
 }
 
 #addList:hover {
@@ -357,21 +346,20 @@ span {
 
 .listContainer {
   display: flex;
-  /* width: 100%; */
 }
 
 .newList {
-  /* border: 1px solid black; */
   background: white;
   width: 272px;
   border-radius: 3px;
-  /* margin: 0px 10px; */
   padding: 10px 0px;
-  /* height: 90%; */
   list-style: none;
   box-sizing: border-box;
-  /* display: inline-block; */
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   vertical-align: top;
   white-space: nowrap;
   box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.75);
@@ -426,7 +414,6 @@ span {
   width: 242px;
   padding: 3px 0px;
   border: none;
-  /* border: 1px solid black; */
   background: white;
   color: black;
   padding-left: 10px;
@@ -447,19 +434,28 @@ span {
   background: rgb(250, 250, 250);
 }
 
-.newTask {
+.newTaskCard {
+  width: 242px;
+  background: white;
+}
+
+.newTaskCard:hover {
+  transform: scale(1.05);
+}
+
+.newTaskName {
   height: 25px;
   min-height: 30px;
   max-height: 55px;
-  width: 242px;
-  max-width: 242px;
-  min-width: 242px;
+  width: 235px;
+  max-width: 235px;
+  min-width: 235px;
   border: none;
   overflow-y: hidden;
-  border: .5px solid lightgray;
+  font-family: sans-serif;
 }
 
-.newTask:hover {
+.newTaskName:hover {
   box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.75);
   background: rgb(250, 250, 250);
 }
@@ -468,7 +464,7 @@ span {
   display: flex;
   justify-content: center;
   padding: 5px;
-  margin-top: 10px;
+  margin-top: 2px;
   margin-bottom: 5px;
 }
 
@@ -522,36 +518,6 @@ span {
   background: pink;
   border-radius: 10px;
 }
-
-/* Adds tooltip below for hovering over buttons */
-
-/* .tooltip {
-  position: relative;
-  border: none;
-  font-size: 12px;
-  font-family: sans-serif;
-}
-
-.tooltip:before {
-  content: attr(data-text);
-  position:absolute;
-  width: 85px;
-  height: 12px;
-  bottom: 100%;
-  left: 50%;
-  margin-left: -60px;
-  padding:10px;
-  border-radius:5px;
-  background: whitesmoke;
-  color: white;
-  text-align:center;
-  display:none;
-}
-
-.tooltip:hover:before {
-  display:block;
-  font-family: sans-serif;
-} */
 
 /* ============ Logout (logout.ejs) =============== */
 
@@ -677,20 +643,3 @@ span {
 #signupBtn {
   margin-top: 15px;
 }
-
-/* =============  ============== */
-
-/* .nav {
-  display: flex;
-  justify-content: space-evenly;
-}
-
-#nav {
-  list-style: none;
-  display: flex;
-  justify-content: right;
-}
-
-.navItem {
-  margin: 5px;
-} */

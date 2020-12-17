@@ -55,10 +55,5 @@ router.get('/logout', (req, res) => {
   res.redirect('/auth/logout')
 })
 
-// PULL USER DATA
-
-// router.get('/profile/:userId', (req, res) => {
-//   const foundUser = req.users
-// })
 
 module.exports = router;

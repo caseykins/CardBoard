@@ -44,8 +44,6 @@ router.put('/board/:id', isLoggedIn, (req, res) => {
 
 // Edit task name
 router.put('/board/:id/editTask', isLoggedIn, (req, res) => {
-    console.log(req.body.addTask, "=========== Task Name")
-    console.log(req.params.id, "=========== Task ID")
     db.tasks.update({
         name: req.body.addTask,
     }, {
@@ -68,10 +66,8 @@ router.delete('/board/:id', isLoggedIn, (req, res) => {
     })
 })
 
-
 // Delete task from list/page/database
 router.delete('/board/:id/deleteItem', isLoggedIn, (req, res) => {
-    console.log(req.params.id, "========== Task Id")
     db.tasks.destroy({
         where: {
             id: req.params.id,
