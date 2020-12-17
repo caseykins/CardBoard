@@ -6,10 +6,10 @@
 
     <p id="boardTitle">Welcome to your board, <%= userName %>!</p>
 
-<!-- Adds New List Card -->
+    <!-- Adds New List Card -->
     <div class="cardContainer">
       <div class="listWrapper">
-        <form action="/board" method="POST">
+        <form id="addListForm" action="/board" method="POST">
           <li class="list">
             <p id="addListTitle">Create a New List!</p>
             <textarea 
@@ -23,29 +23,65 @@
               </button>
           </li>
         </form>
-      </div>
+      </div>  <!-- closing tag for listWrapper -->
 
       <div class="listContainer">
 
         <% foundList.forEach(list => { %>
 
           <div class="listWrapper">
-<!-- Edits List Name -->
+
+            <!-- Edits List Name -->
             <div class="newList" class="draggable" draggable="true">
               <form method="POST" action="/board/<%= list.id %>/?_method=PUT">
-                <textarea
+                <input
                   name="newTitle" 
-                  <%# type="text" #%>
+                  type="text"
                   class="newListTitle" 
-                  maxlength="75"><%= list.listName %>
-                </textarea>
+                  value="<%= list.listName %>" 
+                />
               </form>
 
-<!-- Creates New Task, Sends To DB -->
-<!-- NEED TO FIND WAY TO APPEND TO LIST CONTAINER WITH THESE DEFAULT VALUES BELOW -->
-<!-- DOES THIS NEED TO BE OUTSIDE OF THE LOOP, LIKE THE CREATE LIST FORM ABOVE? (LINE 12) -->
+
+              <!-- Adds new tasks to lists -->
+              <% list.tasks.forEach(task => { %>
+
+                <!-- Edits task name -->
+                <div class="newTaskCard" class="draggable" draggable="true">
+                  <form method="POST" action="/board/<%= task.id %>/editTask/?_method=PUT">
+                    <strike>
+                      <input
+                        name="addTask" 
+                        type="text"
+                        class="newTask"
+                        value="<%= task.name %>"
+                      />
+                    </strike>
+                  </form>
+
+                  <!-- Upon button click, strikethrough finished task -->
+                  <div class="taskBtnContainer">  
+                    <form method="POST" action="/board">
+                      <button 
+                        class="taskBtn"
+                        onclick={strikeThrough()}
+                      ><i class="fas fa-check fa-lg"></i>
+                      </button>
+                    </form>
+                    <!-- delete task from list -->
+                    <% console.log(task.id, "==============task id")%>
+                    <form method="POST" action="/board/<%= task.id %>/deleteItem/?_method=DELETE">
+                      <button class="taskBtn">
+                        <i class="fas fa-trash-alt fa-lg"></i>
+                      </button>
+                    </form>
+                  </div>  <!-- closing tag for taskBtnContainer -->
+
+                </div>  <!-- closing tag for newTask -->
+              <% }) %>
+
               <div class="taskCard" class="draggable" draggable="true">
-                <form method="POST" action="/board">
+                <form method="POST" action="/board/<%= list.id %>/newtask">
                   <strike>
                     <input 
                       name="addTask" 
@@ -54,24 +90,8 @@
                       placeholder="Add Task" />
                   </strike>
                 </form> 
-
-  <!-- Upon button click, strikethrough finished task -->
-                <div class="taskBtnContainer">  
-                  <form method="POST" action="/board">
-                    <button 
-                      class="taskBtn"
-                      onclick={strikeThrough()}
-                    ><i class="fas fa-check fa-lg"></i>
-                    </button>
-                  </form>
-  <!-- delete task from list -->
-                  <form method="POST" action="/board/?_method=DELETE">
-                    <button class="taskBtn">
-                      <i class="fas fa-trash-alt fa-lg"></i>
-                    </button>
-                  </form>
-                </div>
-              </div>
+              </div>  <!-- closing tag for taskCard -->
+              
 
                 <form action='/board/<%= list.id %>/?_method=DELETE' method="POST">
                   <button 
@@ -81,17 +101,17 @@
                     >Delete List
                   </button>
                 </form>
-            </div>
+            </div>  <!-- closing tag for newList -->
 
-          </div>
+          </div>  <!-- closing tag for listWrapper -->
 
         <% }) %>
       
-      </div>
+      </div>  <!-- closing tag for listContainer -->
 
-    </div>
+    </div> <!-- closing tag for cardContainer -->
 
 
-</div>
+</div>  <!-- closing tag for board -->
 
 <script src='/scripts/app.js'></script>  

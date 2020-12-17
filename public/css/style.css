@@ -66,12 +66,51 @@ span {
   font-size: 1.3em;
 }
 
-.direct {
+.homeDirects {
   color: white;
   cursor: pointer;
+  width: 20vw;
+  display: flex;
+  text-align: center;
+  justify-content: space-evenly;
 }
 
-.direct:hover{
+.iconContainer {
+  border: 1px solid white;
+  border-radius: 10px;
+  width: 50px;
+  height: 50px;
+}
+
+.homeAnchor {
+  font-family: 'Annie Use Your Telescope', cursive;
+  color: white;
+  text-decoration: none;
+}
+
+.homeAnchor:hover{
+  opacity: 50%;
+  transform: scale(1.1)
+}
+
+#loginIcon {
+  margin-top: 5px;
+  padding: 5px;
+  color: white;
+}
+
+#loginIcon:hover{
+  opacity: 50%;
+  transform: scale(1.1)
+}
+
+#signupIcon {
+  margin-top: 5px;
+  padding: 5px;
+  color: white;
+}
+
+#signupIcon:hover{
   opacity: 50%;
   transform: scale(1.1)
 }
@@ -98,6 +137,13 @@ span {
 .title {
   font-size: 25px;
   font-family: 'Annie Use Your Telescope', cursive;
+  color: rgb(114, 150, 227);
+  text-decoration: none;
+}
+
+.title:hover {
+  color: rgb(60, 60, 171);
+  transform: scale(1.2)
 }
 
 .loginContainer {
@@ -180,6 +226,18 @@ span {
   justify-content: center;
 }
 
+#title {
+  font-size: 25px;
+  font-family: 'Annie Use Your Telescope', cursive;
+  color: rgb(114, 150, 227);
+  text-decoration: none;
+}
+
+#title:hover {
+  color: rgb(60, 60, 171);
+  transform: scale(1.2)
+}
+
 #logoutNav {
   position: absolute;
   right: 2vw;
@@ -187,11 +245,12 @@ span {
   text-decoration: none;
   color: rgb(114, 150, 227);
   cursor: pointer;
+  font-size: 15px;
 }
 
 #logoutNav:hover {
-  opacity: 50%;
-  transform: scale(1.1)
+  color: rgb(60, 60, 171);
+  transform: scale(1.2)
 }
 
 #boardTitle {
@@ -208,6 +267,10 @@ span {
   left: 0px;
   height: 7%;
   top: 5vh;
+  font-family: 'PT Sans Narrow', sans-serif;
+  letter-spacing: 1px;
+  font-size: 24px;
+  /* font-style: italic; */
 }
 
 .cardContainer {
@@ -216,10 +279,11 @@ span {
   justify-content: flex-start;
   height: 78vh;
   margin-top: 20vh;
+  padding-top: 5px;
   /* bottom: 0px; */
   /* left: 0px; */
   width: 100%;
-  /* border-top: 2px solid black; */
+  /* border: 2px solid black; */
   /* border-radius: 5px; */
   /* background: lightblue; */
   overflow-x: scroll;
@@ -232,74 +296,226 @@ span {
 }
 
 .list {
-  border: 1px solid black;
-  background: whitesmoke;
+  /* border: 1px solid black; */
+  background: white;
+  text-align: center;
   width: 262px;
+  border: none;
   border-radius: 3px;
   margin-right: 10px;
   padding: 5px;
   list-style: none;
+  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.75);
+}
+
+.list:hover {
+  transform: scale(1.02)
+}
+
+#addListTitle {
+  font-family: 'Annie Use Your Telescope', cursive;
+  /* letter-spacing: 1px; */
+  font-size: 18px;
+  font-weight: bold;
 }
 
 #addList {
-  margin: 2px;
-  /* padding: 2px; */
+  /* margin: 2px; */
+  border: none;
+  padding: 2px 0px 2px 3px;
+  width: 190px;
+  max-width: 190px;
+  min-width: 190px;
+  height: 20px;
+  max-height: 50px;
+  min-height: 20px;
+}
+
+#addList:hover {
+  transform: scale(1.03);
+  box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.75);
+  background: rgb(250, 250, 250);
 }
 
 #doIt {
-  margin: 2px;
+  margin: 0px 2px 5px 2px;
+  background: rgb(114, 150, 227);
+  color: white;
+  font-family: sans-serif;
+  border: none;
+  border-radius: 3px;
+  padding: 5px 9px;
+  letter-spacing: .5px;
+}
+
+#doIt:hover {
+  transform: scale(1.05);
+  box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.75);
+  cursor: pointer;
+  background: rgb(60, 60, 171);
 }
 
 .listContainer {
   display: flex;
+  /* width: 100%; */
 }
 
 .newList {
-  border: 1px solid black;
-  background: whitesmoke;
+  /* border: 1px solid black; */
+  background: white;
   width: 272px;
   border-radius: 3px;
   /* margin: 0px 10px; */
-  padding: 5px;
+  padding: 10px 0px;
   /* height: 90%; */
   list-style: none;
   box-sizing: border-box;
-  display: inline-block;
+  /* display: inline-block; */
+  text-align: center;
   vertical-align: top;
   white-space: nowrap;
+  box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.75);
+}
+
+.newList:hover {
+  transform: scale(1.02)
 }
 
 .newListTitle {
   margin: 5px 0px;
-  padding: 3px 0px;
-  width: 98%;
+  margin-left: 2px;
+  padding: 10px 0px;
+  width: 255px;
   border: none;
   text-align: center;
   font-weight: bold;
   font-size: 15px;
-  /* border: 1px solid black; */
-  background: whitesmoke;
+  background: white;
+  font-family: 'Annie Use Your Telescope', cursive;
+  font-size: 18px;
+  letter-spacing: 1px;
+  padding: 3px 0px;
+  width: 255px;
+  min-width: 255px;
+  max-width: 255px;
+  height: 42px;
+  min-height: 30px;
+  max-height: 50px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.newListTitle:hover {
+  transform: scale(1.03);
+  box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.75);
+  background: rgb(250, 250, 250);
+}
+
+.taskCard{
+  margin-left: 3px;
+  width: 265px;
+  background: white;
+  border-radius: 3px;
+}
+
+.taskCard:hover {
+  transform: scale(1.01)
 }
 
 .addTask {
-  width: 75%;
-  /* border: none; */
-  border: 1px solid black;
-  background: whitesmoke;
+  width: 242px;
+  padding: 3px 0px;
+  border: none;
+  /* border: 1px solid black; */
+  background: white;
   color: black;
+  padding-left: 10px;
+  min-width: 242px;
+  max-width: 242px;
+  height: 50px;
+  min-height: 30px;
+  max-height: 50px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  font-family: sans-serif;
+}
+
+.addTask:hover {
+  transform: scale(1.05);
+  box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.75);
+  opacity: 75%;
+  background: rgb(250, 250, 250);
+}
+
+.newTask {
+  height: 25px;
+  min-height: 30px;
+  max-height: 55px;
+  width: 242px;
+  max-width: 242px;
+  min-width: 242px;
+  border: none;
+  overflow-y: hidden;
+  border: .5px solid lightgray;
+}
+
+.newTask:hover {
+  box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.75);
+  background: rgb(250, 250, 250);
+}
+
+.taskBtnContainer {
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.taskBtn {
+  margin: 0px 3px;
+  background: rgb(114, 150, 227);
+  border: none;
+  border-radius: 3px;
+  width: 30px;
+  height: 30px;
+  color: white;
+  font-family: sans-serif;
+}
+
+.taskBtn:hover {
+  transform: scale(1.05);
+  box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.75);
+  cursor: pointer;
+  background: rgb(60, 60, 171);
 }
 
 .deleteListBtn {
   margin: 3px;
+  background: rgb(114, 150, 227);
+  border: none;
+  color: white;
+  border-radius: 3px;
+  width: 80px;
+  height: 25px;
+  font-family: sans-serif;
+  letter-spacing: .5px;
+}
+
+.deleteListBtn:hover {
+  transform: scale(1.05);
+  box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.75);
+  cursor: pointer;
+  background: rgb(60, 60, 171);
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
-  color: blue;
+  width: 5px;
 }
 
 ::-webkit-scrollbar-track {
   background: gray;
+  border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -307,10 +523,46 @@ span {
   border-radius: 10px;
 }
 
+/* Adds tooltip below for hovering over buttons */
+
+/* .tooltip {
+  position: relative;
+  border: none;
+  font-size: 12px;
+  font-family: sans-serif;
+}
+
+.tooltip:before {
+  content: attr(data-text);
+  position:absolute;
+  width: 85px;
+  height: 12px;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -60px;
+  padding:10px;
+  border-radius:5px;
+  background: whitesmoke;
+  color: white;
+  text-align:center;
+  display:none;
+}
+
+.tooltip:hover:before {
+  display:block;
+  font-family: sans-serif;
+} */
+
 /* ============ Logout (logout.ejs) =============== */
 
 #logout {
   background: rgb(60, 60, 171);
+}
+
+.logoutTitle {
+  font-family: 'Annie Use Your Telescope', cursive;
+  color: rgb(114, 150, 227);
+  font-size: 25px;
 }
 
 .logoutHeader {

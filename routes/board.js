@@ -6,28 +6,25 @@ const methodOverride = require("method-override");
 
 router.use(methodOverride("_method"));
 
-
-// ============= Board Page ================
-
+// Get Board page with user's id and render board.ejs
 router.get("/board", isLoggedIn, (req, res) => {
     let userName = req.user.userName
     db.lists.findAll({
         where: {
             userId: req.user.id,
         }, include: [db.tasks]
-    }).then( function(foundList, foundTask) {
-        res.render('board', { userName: userName, foundList: foundList, foundTask: foundTask } )
+    }).then( function(foundList) {
+        res.render('board', { userName: userName, foundList: foundList } )
     })
 })
 
-// ============= Lists ================
-
-// Create New List
-router.post('/board', (req, res) => {
-    db.lists.create({
-        listName: req.body.title,
-        userId: req.user.id 
-    }).then( function (createdList) { 
+// Add a new task to list
+router.post('/board/:id/newtask', isLoggedIn, (req, res) => {
+    db.tasks.create({
+        name: req.body.addTask,
+        userId: req.user.id,
+        listId: req.params.id
+    }).then( function (createTask) { 
         res.redirect('/board')
     })
 })
@@ -45,42 +42,10 @@ router.put('/board/:id', isLoggedIn, (req, res) => {
     })
 })
 
-// Delete List
-router.delete('/board/:id', isLoggedIn, (req, res) => {
-    db.lists.destroy({
-        where: {
-            id: req.params.id,
-        }
-    }).then((removedList) => {
-        res.redirect('/board') 
-    })
-})
-
-// ============== Tasks ===================
-
-// Add a new task to list
-router.post('/board/:id', (req, res) => {
-    // console.log(req.body.addTask, "========add task=======")
-    // console.log(req.user.id, "======user id======")
-    // console.log(req.params.id, "======params id(list id)====")
-    // console.log(req.user.userName, "======User Name====")
-    db.tasks.create({
-        name: req.body.addTask,
-        userId: req.user.id,
-        listId: req.params.id
-    }).then( function () { 
-        res.redirect('/board')
-    })
-})
-
-// Edit task
-
-// strike() goes here....?
-
-router.put('/board', isLoggedIn, (req, res) => {
-    // console.log(req.user.id, '=========user id=========')
-    console.log(req.params.id, '=========params id=======')
-    console.log(req.body, '=========req body=======')
+// Edit task name
+router.put('/board/:id/editTask', isLoggedIn, (req, res) => {
+    console.log(req.body.addTask, "=========== Task Name")
+    console.log(req.params.id, "=========== Task ID")
     db.tasks.update({
         name: req.body.addTask,
     }, {
@@ -92,7 +57,7 @@ router.put('/board', isLoggedIn, (req, res) => {
     })
 })
 
-// Delete Task (might forego this and only use edit)
+// Delete List
 router.delete('/board/:id', isLoggedIn, (req, res) => {
     db.lists.destroy({
         where: {
@@ -100,6 +65,29 @@ router.delete('/board/:id', isLoggedIn, (req, res) => {
         }
     }).then((removedList) => {
         res.redirect('/board') 
+    })
+})
+
+
+// Delete task from list/page/database
+router.delete('/board/:id/deleteItem', isLoggedIn, (req, res) => {
+    console.log(req.params.id, "========== Task Id")
+    db.tasks.destroy({
+        where: {
+            id: req.params.id,
+        }
+    }).then((removedList) => {
+        res.redirect('/board') 
+    })
+})
+
+// Create New List
+router.post('/board', (req, res) => {
+    db.lists.create({
+        listName: req.body.title,
+        userId: req.user.id
+    }).then( function (createdList) { 
+        res.redirect('/board')
     })
 })
 
