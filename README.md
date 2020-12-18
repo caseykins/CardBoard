@@ -1,107 +1,49 @@
-# Express Authentication
+# CardBoard
+___
 
-Express authentication template using Passport + flash messages + custom middleware
+Welcome to CardBoard! CardBoard is a fully interactive, digital to-do list. In other words, this is an attempted clone of Trello, without all of the cool features that Trello provides! CardBoard is the result of my final project for General Assembly's Software Engineering Immersive program. 
 
-## What it includes
+___
 
-* Sequelize user model / migration
-* Settings for PostgreSQL
-* Passport and passport-local for authentication
-* Sessions to keep user logged in between pages
-* Flash messages for errors and successes
-* Passwords that are hashed with BCrypt
-* EJS Templating and EJS Layouts
+### Why?
 
-### User Model
+I wanted to make an app that I can see myself improving and even using over time. I wanted to take a model, Trello, that has a lot of UX/UI properties and see if I could test myself in building something interactive using Express and EJS. I was also encouraged to use Express/EJS only for this project in order to implement drag and drop components later.
 
-| Column Name | Data Type | Notes |
-| --------------- | ------------- | ------------------------------ |
-| id | Integer | Serial Primary Key, Auto-generated |
-| name | String | Must be provided |
-| email | String | Must be unique / used for login |
-| password | String | Stored as a hash |
-| createdAt | Date | Auto-generated |
-| updatedAt | Date | Auto-generated |
+___
 
-### Default Routes
+### User Abilities
 
-| Method | Path | Location | Purpose |
-| ------ | ---------------- | -------------- | ------------------- |
-| GET | / | server.js | Home page |
-| GET | /auth/login | auth.js | Login form |
-| GET | /auth/signup | auth.js | Signup form |
-| POST | /auth/login | auth.js | Login user |
-| POST | /auth/signup | auth.js | Creates User |
-| GET | /auth/logout | auth.js | Removes session info |
-| GET | /profile | server.js | Regular User Profile |
+I wanted to give CardBoard users a robust experience, being able to create an intuitive online to-do list that was fully customizable. The goal was to have a user be able to create an account and instantly be able to update their board. The user has the ability to create any number of lists, and be able to populate those lists with a number of tasks. Along the way, if the user needs to edit a list name or task, they have to option to. Furthermore, if the user finishes a task, or the list as a whole, there is a delete task and delete list option. Other features that are planned, but still need to be developed, are allowing the user to move their lists and tasks via drag and drop, and to make lists collaborative with other users.
 
-## Steps To Use
+### Technologies Used
 
-#### 1. Create a new repo on Github and use your 'express-authentication' as the template
+Express.js, Node.js, Sequelize, Postgres, EJS, HTML5, CSS, Javascript
+___
 
-When we are finished with this boilerplate, we are going to make it a template on Github that will allow us to create a new repo on Github with all this code already loaded in.
-* Go to `github.com` and create a new repository. In the template dropdown, choose this template.
-* Clone your new repo to your local machine
-* Get Codin'!
+### Screenshots
 
-#### 2. Delete any .keep files
+![landing page](./public/images/landingpage.png)
+![login page](./public/images/login.png)
+![signup page](./public/images/signup.png)
+![board page 1](./public/images/board1.png)
+![board page 2](./public/images/board2.png)
+![logout page](./public/images/logout.png)
 
-The `.keep` files are there to maintain the file structure of the auth. If there is a folder that has nothing in it, git won't add it. The dev work around is to add a file to it that has nothing in it, just forces git to keep the folder so we can use it later.
+___
 
-#### 3. Install node modules from the package.json
+### Future Development
 
-```
-npm install
-```
+* Drag and Drop Feature
+* Allow User to create multiple boards and navigate them
+* Include collaborative boards, where the board owner can invite other users
+* Allowing user to choose avatar/profile
+* Allow user to choose different background images or colors
+* Archive feature for lists and tasks
+* Change username feature
+* Strikethrough finished tasks with checkmark button
 
-(Or just `npm i` for short)
+___
 
-#### 4. Customize with new project name
+### Special Thanks
 
-Remove defaulty type stuff. Some areas to consider are:
-
-* Title in `layout.ejs`
-* Description/Repo Link in `package.json`
-* Remove boilerplate's README content and replace with new project's readme
-
-#### 5. Create a new database for the new project
-
-Using the sequelize command line interface, you can create a new database from the terminal.
-
-```
-createdb <new_db_name>
-```
-
-#### 6. Update `config.json`
-
-* Change the database name
-* Other settings are likely okay, but check username, password, and dialect
-
-#### 7. Check the models and migrations for relevance to your project's needs
-
-For example, if your project requires a birthdate field, then don't add that in there. 
-
-> When changing your models, update both the model and the migration.
-
-#### 8. Run the migrations
-
-```
-sequelize db:migrate
-```
-
-#### 9. Add a `.env` file with the following fields:
-
-* SESSION_SECRET: Can be any random string; usually a hash in production
-* PORT: Usually 3000 or 8000
-
-#### 10. Run server; make sure it works
-
-```
-nodemon
-```
-
-or
-
-```
-node index.js
-```
+This project would not have happened without the help of a lot of great people. There are so many to name, but a few special mentions go out to Brock Whitbread-Cole, Jacob Kleiman, James Sinkler, and Michael Petty - all are fantastic instructors and helped me through many blockers. A huge thanks to my fellow GA students who kept me sane during this project and offering support and advice along the way. Lastly, the internet for doing what it does and also Trello for making a product worthy enough to replicate.
